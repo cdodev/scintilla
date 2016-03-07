@@ -1,2 +1,2 @@
 # scintilla
-Break your data down to it's smallest trace
+Break your data down to its smallest trace

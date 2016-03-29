@@ -1,7 +1,8 @@
 { mkDerivation, aeson, attoparsec, base, bytestring, containers
 , either, errors, free, hedis, lens, mmorph, mtl, pipes
 , pipes-concurrency, postgresql-simple, stdenv, tasty, tasty-hspec
-, tasty-quickcheck, text, transformers, unordered-containers, uuid
+, tasty-quickcheck, text, thyme, transformers, unordered-containers
+, uuid
 }:
 mkDerivation {
   pname = "scintilla";
@@ -12,7 +13,7 @@ mkDerivation {
   buildDepends = [
     aeson attoparsec base bytestring containers either errors free
     hedis lens mmorph mtl pipes pipes-concurrency postgresql-simple
-    text transformers unordered-containers uuid
+    text thyme transformers unordered-containers uuid
   ];
   testDepends = [
     base containers mmorph tasty tasty-hspec tasty-quickcheck

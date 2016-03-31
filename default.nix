@@ -1,8 +1,8 @@
 { mkDerivation, aeson, attoparsec, base, bytestring, containers
-, either, errors, free, hedis, lens, mmorph, mtl, pipes
-, pipes-concurrency, postgresql-simple, stdenv, tasty, tasty-hspec
-, tasty-quickcheck, text, thyme, transformers, unordered-containers
-, uuid
+, either, errors, free, hedis, lens, mmorph, mtl, opaleye
+, opaleye-sot, pipes, pipes-concurrency, postgresql-simple, stdenv
+, tasty, tasty-hspec, tasty-quickcheck, text, thyme, transformers
+, unordered-containers, uuid
 }:
 mkDerivation {
   pname = "scintilla";
@@ -12,8 +12,8 @@ mkDerivation {
   isExecutable = true;
   buildDepends = [
     aeson attoparsec base bytestring containers either errors free
-    hedis lens mmorph mtl pipes pipes-concurrency postgresql-simple
-    text thyme transformers unordered-containers uuid
+    hedis lens mmorph mtl opaleye opaleye-sot pipes pipes-concurrency
+    postgresql-simple text thyme transformers unordered-containers uuid
   ];
   testDepends = [
     base containers mmorph tasty tasty-hspec tasty-quickcheck

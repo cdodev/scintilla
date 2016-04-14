@@ -22,7 +22,7 @@ library
                      , bytestring >= 0.10.4.0
                      , containers >= 0.5.5.1
                      , either >= 4.3.3.2
-                     , errors >= 1.4.7
+                     , exceptions >= 0.8.2.1
                      , free
                      , hedis >= 0.6.5
                      , lens
@@ -33,6 +33,7 @@ library
                      , pipes
                      , pipes-concurrency
                      , postgresql-simple >= 0.5.1.2
+                     , product-profunctors >= 0.7.0.2
                      , text >= 1.2.0.4
                      , thyme >= 0.3.5.5
                      , transformers >= 0.4.2.0
@@ -51,7 +52,7 @@ executable scintilla-exe
                      , bytestring >= 0.10.4.0
                      , containers >= 0.5.5.1
                      , either >= 4.3.3.2
-                     , errors >= 1.4.7
+                     , exceptions >= 0.8.2.1
                      , free
                      , hedis >= 0.6.5
                      , lens
@@ -60,6 +61,7 @@ executable scintilla-exe
                      , pipes
                      , pipes-concurrency
                      , postgresql-simple >= 0.5.1.2
+                     , product-profunctors >= 0.7.0.2
                      , text >= 1.2.0.4
                      , transformers >= 0.3.0.0
                      , unordered-containers >= 0.2.5.1

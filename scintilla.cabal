@@ -16,6 +16,7 @@ cabal-version:       >=1.10
 library
   hs-source-dirs:      src
   exposed-modules:     Scintilla.Command.Types
+                     , Scintilla.Query
   build-depends:       base >= 4.7 && < 5
                      , aeson
                      , attoparsec >= 0.12.1.5

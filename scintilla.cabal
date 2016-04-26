@@ -17,6 +17,9 @@ library
   hs-source-dirs:      src
   exposed-modules:     Scintilla.Command.Types
                      , Scintilla.Query
+
+  other-modules:       Scintilla.Query.Types
+                     , Scintilla.Query.Querying
   build-depends:       base >= 4.7 && < 5
                      , aeson
                      , attoparsec >= 0.12.1.5

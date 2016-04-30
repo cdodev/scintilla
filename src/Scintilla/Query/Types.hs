@@ -1,6 +1,7 @@
 {-# LANGUAGE ConstraintKinds            #-}
 {-# LANGUAGE DataKinds                  #-}
 {-# LANGUAGE FlexibleContexts           #-}
+{-# LANGUAGE FlexibleInstances          #-}
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
 {-# LANGUAGE MultiParamTypeClasses      #-}
 {-# LANGUAGE PolyKinds                  #-}
@@ -13,6 +14,9 @@ module Scintilla.Query.Types
     ( DBMonad
     , runMonadQuery
     , queryDb
+
+    , ParseHsR(..)
+    , parseHsRT
     ) where
 
 import           Control.Monad.Catch             (MonadThrow, MonadCatch, MonadMask, SomeException,
@@ -22,7 +26,6 @@ import           Control.Monad.Reader            (MonadReader, ask)
 import           Control.Monad.Trans.Class       (MonadTrans, lift)
 import           Control.Monad.Trans.Reader      (ReaderT, runReaderT)
 import qualified Data.Profunctor.Product.Default as PP
-import           Database.PostgreSQL.Simple      (Connection)
 import qualified Opaleye                         as O
 import           Opaleye.SOT
 
@@ -49,8 +52,19 @@ runMonadQuery conn dbm = withTransactionRead Serializable conn (runReaderT (unQ 
 queryDb :: forall t ps m a
          . ( MonadIO m, MonadThrow m
            , PP.Default O.QueryRunner (PgR t) (HsR t)
-           , Tabla t, UnHsR t a, Allow 'Fetch ps)
+           , Tabla t, ParseHsR t a, Allow 'Fetch ps)
         => O.Query (PgR t) -> DBMonad ps m [a]
 queryDb q = do
   conn <- ask
-  lift $ runQuery conn (unHsR (T :: T t)) q
+  hsrs <- lift $ runQuery conn q
+  traverse (either throwM return . parseHsRT (T :: T t)) hsrs
+
+
+class Tabla t => ParseHsR t a where
+  parseHsR :: HsR t -> Either SomeException a
+
+instance (Tabla t, ParseHsR t a, ParseHsR t b) => ParseHsR t (a, b) where
+  parseHsR hsr = (,) <$> parseHsR hsr <*> parseHsR hsr
+
+parseHsRT :: ParseHsR t a => T t -> HsR t -> Either SomeException a
+parseHsRT _ = parseHsR

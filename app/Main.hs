@@ -1,4 +1,4 @@
 module Main where
 
 main :: IO ()
-main = putStrLn "Hi"
+main = putStrLn "Hi from app"

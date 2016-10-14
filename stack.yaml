@@ -68,4 +68,5 @@ extra-package-dbs: []
 nix:
   pure: false
   path: [nixpkgs=/home/ben/dev/nixpkgs/]
-  packages: [ postgresql ]
+  shell-file: shell.nix
+  # packages: [ postgresql ]

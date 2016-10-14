@@ -33,7 +33,7 @@ library
                      , mmorph >= 1.0.4
                      , mtl >= 2.1.3.1
                      , opaleye
-                     , opaleye-sot
+                     , tisch
                      , pipes
                      , pipes-concurrency
                      , postgresql-simple >= 0.5.1.2

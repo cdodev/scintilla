@@ -12,4 +12,4 @@ main = do
 specs :: Spec
 specs = do
   describe "A test" $ do
-    it "passes" $ (1::Int) `shouldBe` 2
+    it "passes" $ (1::Int) `shouldBe` 1

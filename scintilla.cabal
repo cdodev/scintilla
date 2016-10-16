@@ -81,6 +81,7 @@ test-suite scintilla-test
                      , containers >= 0.5.5.1
                      , mmorph >= 1.0.4
                      , tasty >= 0.10.1
+                     , tasty-ant-xml >= 1.0.2
                      , tasty-hspec >= 1.1
                      , tasty-quickcheck >= 0.8.3.2
                      , unordered-containers >= 0.2.5.1

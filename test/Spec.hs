@@ -2,12 +2,13 @@ module Main (main) where
 
 import Test.Tasty
 import Test.Tasty.Hspec
+import Test.Tasty.Ingredients.Basic
 import Test.Tasty.Runners.AntXML
 
 main :: IO ()
 main = do
   theSpecs <- testSpec "Specs" specs
-  defaultMainWithIngredients [antXMLRunner] theSpecs
+  defaultMainWithIngredients (antXMLRunner:defaultIngredients) theSpecs
 
 specs :: Spec
 specs = do

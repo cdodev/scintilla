@@ -14,3 +14,4 @@ specs :: Spec
 specs = do
   describe "A test" $ do
     it "passes" $ (1::Int) `shouldBe` 1
+    it "fails" $ (1::Int) `shouldBe` 2

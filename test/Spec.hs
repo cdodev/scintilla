@@ -15,3 +15,4 @@ specs = do
   describe "A test" $ do
     it "passes" $ (1::Int) `shouldBe` 1
     it "fails - or does it?" $ (1::Int) `shouldBe` 1
+    it "fails - definitely" $ (1::Int) `shouldBe` 0
